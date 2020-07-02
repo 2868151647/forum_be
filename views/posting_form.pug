@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='tittle') Tittle:
+      input.form-control(type='text', placeholder='tittle' name='tittle' required='true' value=(undefined===posting ? '' : posting.tittle) )
+    div.form-group
+      label(for='content') Content:
+      input.form-control(type='text', name='content', placeholder='content' required='true' value=(undefined===posting ? '' : posting.content))
+    div.form-group
+      label(for='authorid') Authorid:
+      input.form-control(type='text', name='authorid', placeholder='id' required='true' value=(undefined===posting ? '' : posting.authorid))
+    div.form-group
+      label(for='author') Author:
+      input.form-control(type='text', name='author', placeholder='author' required='true' value=(undefined===posting ? '' : posting.author))
+    div.form-group
+      label(for='date') Date:
+      input.form-control(type='text', name='date', placeholder='date' required='true' value=(undefined===posting ? '' : posting.date))
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

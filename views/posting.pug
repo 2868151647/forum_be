@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    h2 用户回帖列表
+      .table-responsive
+        table.table.table-striped.table-sm(style='font-size:15px;table-layout:fixed;')
+          thead
+            tr
+              th id
+              th tittle
+              th content
+              th authorid
+              th author
+              th date
+          tbody
+            each posting in postings
+              tr
+                td(style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:400px') #{posting.id}
+                td(style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:400px') #{posting.tittle} 
+                td(style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:400px')  #{posting.content}
+                td #{posting.authorid}
+                td #{posting.author}
+                td(style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:400px') #{posting.date}
+                td
+                  //- a.btn.btn-danger(href= user.url +'/delete', onclick='return messageBox()') 删除
+                  form(method='POST' action='/forum/posting/'+posting.id +'/bedelete')
+                    //- div.form-group
+                    //-   input.form-control(type='',name='user_id', required='true', value = user.id )
+                    button.btn.btn-danger(type='submit',onclick='return messageBox()') 删除
+                    script.
+                      function messageBox(){
+                      if (confirm("确定删除么？")) {
+                        console.log("确定")
+                      } else {
+                        console.log('取消')
+                        return false
+                      }
+                      }
+                td
+                  a.btn.btn-success(href= posting.url +"/beupdate") 修改
+            else
+              p no data
+        a.btn.btn-success(href="/forum/posting/becreate") 添加信息
+                
+            
+            
+                    

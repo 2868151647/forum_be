@@ -1,0 +1,71 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='Mark Otto, Jacob Thornton, and Bootstrap contributors')
+    meta(name='generator', content='Jekyll v3.8.6')
+    title Forum Admin
+    link(rel='canonical', href='https://v4.bootcss.com/docs/examples/dashboard/')
+    // Bootstrap core CSS
+    link(href='/node_modules/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+    
+    meta(name='theme-color', content='#563d7c')
+    style.
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+    // Custom styles for this template
+    link(href='/css/dashboard.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+      a.navbar-brand.col-sm-3.col-md-2.mr-0(href='#') 论坛后台
+      input.form-control.form-control-dark.w-100(type='text', placeholder='Search', aria-label='Search')
+      ul.navbar-nav.px-3
+        li.nav-item.text-nowrap
+          a.nav-link(href='/') Sign out
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link.active(href='/home')
+                  span(data-feather='home')
+                  |               主页 
+                  span.sr-only (current)
+              li.nav-item
+                a.nav-link(href='/forum/users')
+                  span(data-feather='user')
+                  |               用户信息
+              li.nav-item
+                a.nav-link(href='/forum/comment/beall')
+                  span(data-feather='comment')
+                  |               评论信息
+              li.nav-item
+                a.nav-link(href='/forum/posting/all')
+                  span(data-feather='posting')
+                  |               回帖信息
+              li.nav-item
+                a.nav-link(href='#')
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+              span 
+              a.d-flex.align-items-center.text-muted(href='#', aria-label='Add a new report')
+                span(data-feather='plus-circle')
+            ul.nav.flex-column.mb-2
+              
+        main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+          block content
+          
+  

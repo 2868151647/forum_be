@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input.form-control(type='text', placeholder='name' name='name' required='true' value=(undefined===comment ? '' : comment.name) )
+    div.form-group
+      label(for='content') Content:
+      input.form-control(type='text', name='content', placeholder='content' required='true' value=(undefined===comment ? '' : comment.content))
+    div.form-group
+      label(for='replyid') Replyid:
+      input.form-control(type='text', name='replyid', placeholder='id' required='true' value=(undefined===comment ? '' : comment.replyid))
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

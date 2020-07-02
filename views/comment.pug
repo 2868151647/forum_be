@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    h2 用户评论列表
+      .table-responsive
+        table.table.table-striped.table-sm(style='font-size:15px;')
+          thead
+            tr
+              th id
+              th name
+              th content
+              th replyid
+              th date
+          tbody
+            each comment in comments
+              tr(style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:200px')
+                td #{comment.id}
+                td #{comment.name}
+                td #{comment.content}
+                td #{comment.replyid}
+                td #{comment.date}
+                td
+                  //- a.btn.btn-danger(href= user.url +'/delete', onclick='return messageBox()') 删除
+                  form(method='POST' action=comment.url +'/delete')
+                    //- div.form-group
+                    //-   input.form-control(type='',name='user_id', required='true', value = user.id )
+
+                    button.btn.btn-danger(type='submit',onclick='return messageBox()') 删除
+                    script.
+                      function messageBox(){
+                      if (confirm("Press a button!")) {
+                        console.log("确定")
+                      } else {
+                        console.log('取消')
+                        return false
+                      }
+                      }
+                td
+                  a.btn.btn-success(href= comment.url +"/beupdate") 修改
+            else
+              p no data
+        a.btn.btn-success(href="/forum/comment/becreate") 添加信息
+                
+            
+            
+                    

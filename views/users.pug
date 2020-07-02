@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    h2 用户信息列表
+      .table-responsive
+        table.table.table-striped.table-sm(style='font-size:15px')
+          thead
+            tr
+              th #
+              th first_name
+              th family_name
+              th age
+              th account
+              th password
+              th email
+          tbody
+            each user in users_list
+              tr
+                td #{user.id}
+                td #{user.first_name}
+                td #{user.family_name}
+                td #{user.age}
+                td #{user.account}
+                td #{user.password}
+                td #{user.email}
+                td
+                  //- a.btn.btn-danger(href= user.url +'/delete', onclick='return messageBox()') 删除
+                  form(method='POST' action=user.url +'/delete')
+                    //- div.form-group
+                    //-   input.form-control(type='',name='user_id', required='true', value = user.id )
+
+                    button.btn.btn-danger(type='submit',onclick='return messageBox()') 删除
+                    script.
+                      function messageBox(){
+                      if (confirm("你确定删除么？")) {
+                        console.log("确定")
+                      } else {
+                        console.log('取消')
+                        return false
+                      }
+                      }
+                td
+                  a.btn.btn-success(href= user.url +"/update") 修改
+            else
+              p no data
+        //- a.btn.btn-success(href="/forum/users/create") 添加信息
+                
+            
+            
+                    
